@@ -1,49 +1,39 @@
-QT       += core gui
+QT       += core gui widgets
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+CONFIG += c++2b
 
-CONFIG += c++11
+TARGET = NostaleClientCreator
 
-# The following define makes your compiler emit warnings if you use
-# any Qt feature that has been marked deprecated (the exact warnings
-# depend on your compiler). Please consult the documentation of the
-# deprecated API in order to know how to port your code away from it.
 DEFINES += QT_DEPRECATED_WARNINGS
 
-# You can also make your code fail to compile if it uses deprecated APIs.
-# In order to do so, uncomment the following line.
-# You can also select to disable deprecated APIs only up to a certain version of Qt.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+INCLUDEPATH += src
 
 SOURCES += \
-    src/fileversion.cpp \
     src/main.cpp \
-    src/mainform.cpp \
-    src/multiclient.cpp \
-    src/md5.cpp \
-    src/clientedit.cpp
+    src/core/Binary.cpp \
+    src/core/ClientBuilder.cpp \
+    src/core/PeImage.cpp \
+    src/platform/FileVersion.cpp \
+    src/ui/MainWindow.cpp
 
 HEADERS += \
-    src/fileversion.h \
-    src/mainform.h \
-    src/multiclient.h \
-    src/md5.h \
-    src/clientedit.h \
-    src/patternsearch.h
-
-FORMS += \
-    src/mainform.ui
-
-RC_ICONS = img/logo.ico
-
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
+    src/core/Binary.h \
+    src/core/ClientBuilder.h \
+    src/core/PeImage.h \
+    src/core/Signature.h \
+    src/platform/FileVersion.h \
+    src/ui/MainWindow.h \
+    src/ui/StyleSheet.h
 
 RESOURCES += \
     mainform.qrc
 
+RC_ICONS = img/logo.ico
 
-#Require admin permissions
-QMAKE_LFLAGS_WINDOWS += "/MANIFESTUAC:\"level='requireAdministrator' uiAccess='false'\""
+LIBS += -lversion
+
+msvc {
+    QMAKE_LFLAGS_WINDOWS += "/MANIFESTUAC:\"level='requireAdministrator' uiAccess='false'\""
+} else {
+    QMAKE_MANIFEST = $$PWD/MulticlientCreator.manifest
+}

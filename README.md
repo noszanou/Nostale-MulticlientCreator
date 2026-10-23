@@ -1,5 +1,18 @@
-# Multiclient Creator
+# NosTale Client Creator
 
-Multiclient Creator was a Tool to patch the starting mutex of the game NosTale. Since the official client now supports running the client multiple times natively the MCC is only relevant for starting the game with the old authentication method or creating clients with modified endpoints for private servers.
+Creates a copy of `NostaleClientX.exe` that connects to a custom server (`IP:port`), for private servers.
 
-Multiclient Creator was one of my first public projects and is one of the most known and used tools for NosTale.
+The copy is patched so it starts directly (double click, no launcher needed), and the login server IP / port are rewritten.
+
+## Build
+
+Qt 6 (MinGW 64-bit) is required. Adapt `QT_DIR` / `MINGW_DIR` at the top of the scripts, then run:
+
+- `build_release.bat` → `build\release\NostaleClientCreator.exe`
+- `build_debug.bat` → `build\debug\NostaleClientCreator.exe`
+
+The output folder only contains the exe and the Qt dlls it needs.
+
+Requires a C++23 compiler (MinGW 13+).
+
+Created by [Pumba98](https://www.elitepvpers.com/forum/members/3141926-pumba98.html), maintained by [Zanou](https://www.elitepvpers.com/forum/members/7384346-zanouu.html).
