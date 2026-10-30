@@ -16,3 +16,5 @@ The output folder only contains the exe and the Qt dlls it needs.
 Requires a C++23 compiler (MinGW 13+).
 
 Created by [Pumba98](https://www.elitepvpers.com/forum/members/3141926-pumba98.html), maintained by [Zanou](https://www.elitepvpers.com/forum/members/7384346-zanouu.html).
+
+[![Discord](https://img.shields.io/badge/Discord-join%20the%20community-5865F2?logo=discord&logoColor=white)](https://discord.gg/x6JY7QGDyx)
